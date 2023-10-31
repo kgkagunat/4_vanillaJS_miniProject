@@ -68,7 +68,6 @@ console.log(result);
 // Make 1st letter upper case
 const stringV1 = 'tester';
 const resultString = stringV1[0].toUpperCase() + stringV1.substring(1);
-
 console.log(resultString);
 
 // Make every odd letter upper case
@@ -89,7 +88,7 @@ for (i = 0; i < stringV2.length; i++) {
 
 console.log(arrString);
 
-// Replace 'Test' with 'Awesome. Make every other letter upper case. Join two words back to one.
+// Replace 'Test' with 'Awesome. Make every other letter upper case. Join two words back to one. Using `for...of`
 const stringV3 = 'Test World';
 const newStringV3 = stringV3.replace('Test', 'Awesome');
 
@@ -113,9 +112,7 @@ for (const words of arrWord) {
 
     resultWord.push(modifiedWords);
 }
-
 // console.log(resultWord, typeof resultWord);
-
 const finalWord = resultWord.join(' ');
 console.log(finalWord, typeof finalWord);
 
@@ -128,6 +125,80 @@ for (i = stringV4.length - 1; i >= 0; i--) {
     reversedString += stringV4[i];
     // console.log(reversedString);
 }
-
 const reversedFinalString = reversedString;
 console.log(reversedFinalString);
+
+//=====================================================================
+
+// Day 2 of practice
+
+// Reverse string again day 2
+const d2String = 'United States';
+
+let d2InitString = '';
+
+for (i = d2String.length - 1; i >= 0; i--) {
+    d2InitString += d2String[i];
+}
+const d2FinalString = d2InitString;
+console.log(d2FinalString);
+
+// Every other odd letter capitalized day 2
+const d2String1 = 'guantanamo';
+
+let d2String1Init = '';
+
+for (i = 0; i < d2String1.length; i++) {
+    if (i % 2 !== 0) {
+        d2String1Init += d2String1[i].toUpperCase();
+    } else {
+        d2String1Init += d2String1[i].toLowerCase();
+    }
+}
+const d2String1Final = d2String1Init;
+console.log(d2String1Final);
+
+// Ever other letter capitalized with multiple words day 2. Using .forEach()
+const d2String2 = 'People, Places, Things!';
+const d2String2split = d2String2.split(' ');
+
+const d2String2arr = [];
+
+d2String2split.forEach((words) => {
+    let d2ModifiedWord = '';
+    for (i = 0; i < words.length; i++) {
+        if (i % 2 === 0) {
+            d2ModifiedWord += words[i].toUpperCase();
+        } else {
+            d2ModifiedWord += words[i].toLowerCase();
+        }
+    }
+    // console.log(d2ModifiedWord)
+    d2String2arr.push(d2ModifiedWord);
+});
+// console.log(d2String2arr)
+const d2String2Final = d2String2arr.join(' ');
+console.log(d2String2Final, typeof d2String2Final);
+
+// Every other 3 words contain "modified". All other words are left alone.
+const d2stringArray = [
+    'Japan',
+    'Hawaii',
+    'California',
+    'Korea',
+    'England',
+    'Spain',
+];
+
+const d2string3arr = [];
+
+d2stringArray.forEach((word, index) => {
+    if (index % 3 === 2) {
+        const modWord = `${word} - modified`;
+        d2string3arr.push(modWord);
+    } else {
+        const lowerWord = word.toLowerCase();
+        d2string3arr.push(lowerWord);
+    }
+});
+console.log(d2string3arr);
